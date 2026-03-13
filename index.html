@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NUS APEX – Past Sessions</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2a3a;
+    --navy-light: #243447;
+    --orange: #e87722;
+    --orange-light: #f5a54a;
+    --white: #ffffff;
+    --off-white: #f8f6f2;
+    --text: #2c2c2c;
+    --text-muted: #6b6b6b;
+    --border: #e2ddd8;
+    --card-bg: #ffffff;
+    --tag-bg: #f0ede8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--off-white);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: var(--navy);
+    padding: 48px 40px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(232,119,34,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--white);
+    letter-spacing: 0.01em;
+    margin-bottom: 6px;
+  }
+  .page-header .accent-bar {
+    width: 52px; height: 3px;
+    background: var(--orange);
+    margin: 12px auto 0;
+    border-radius: 2px;
+  }
+
+  /* ── FILTER BAR ── */
+  .filter-section {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .filter-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    align-items: center;
+  }
+  .chip {
+    padding: 5px 13px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    color: var(--text-muted);
+    font-size: 12.5px;
+    font-family: 'Source Serif 4', serif;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .chip:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+  }
+  .chip.active {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: var(--white);
+    font-weight: 600;
+  }
+  .chip.all-chip.active {
+    background: var(--navy);
+    border-color: var(--navy);
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 36px 24px 60px;
+  }
+
+  /* ── SEMESTER GROUPS ── */
+  .semester-group {
+    margin-bottom: 48px;
+  }
+  .semester-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--orange);
+    font-style: italic;
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── SESSION CARD ── */
+  .session-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-bottom: 14px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    border-left: 3px solid transparent;
+  }
+  .session-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transform: translateY(-1px);
+    border-left-color: var(--orange);
+  }
+  .session-card.hidden {
+    display: none;
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .card-date {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .card-author {
+    font-weight: 600;
+    font-size: 14.5px;
+    color: var(--navy);
+  }
+  .card-affil {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--text);
+    margin: 10px 0 8px;
+    line-height: 1.4;
+  }
+
+  .card-abstract {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    display: none;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border);
+  }
+  .card-abstract.open { display: block; }
+
+  .toggle-abstract {
+    font-size: 12px;
+    color: var(--orange);
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 6px;
+    background: none;
+    border: none;
+    font-family: inherit;
+    padding: 0;
+    transition: color 0.15s;
+  }
+  .toggle-abstract:hover { color: var(--orange-light); }
+  .toggle-abstract .arrow { transition: transform 0.2s; display: inline-block; }
+  .toggle-abstract.open .arrow { transform: rotate(180deg); }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  .tag {
+    font-size: 11px;
+    padding: 2px 9px;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  /* Field tag colours */
+  .tag-Macro           { background: #e8f0fb; color: #2c5faa; }
+  .tag-EconHistory     { background: #f3ece0; color: #8b5e2a; }
+  .tag-Development     { background: #e6f5ec; color: #2a7a48; }
+  .tag-PoliticalEcon   { background: #f5e6f5; color: #7a2a87; }
+  .tag-Labor           { background: #e9f5fb; color: #1a6e91; }
+  .tag-IO              { background: #fff0e6; color: #c25a00; }
+  .tag-MarketDesign    { background: #faf0e6; color: #b5651d; }
+  .tag-PlatformDigital { background: #e8f8f5; color: #1a7a6e; }
+  .tag-Environmental   { background: #e8f5e8; color: #2e7d32; }
+  .tag-Health          { background: #fce8e8; color: #c62828; }
+  .tag-UrbanRealEstate { background: #f0eaf8; color: #6a1b9a; }
+  .tag-Finance         { background: #e3f2fd; color: #1565c0; }
+  .tag-Experimental    { background: #fff8e1; color: #e65100; }
+  .tag-LawEcon         { background: #f1f8e9; color: #558b2f; }
+  .tag-ConsumerBehavior{ background: #fce4ec; color: #ad1457; }
+  .tag-EconofScience   { background: #e0f7fa; color: #00695c; }
+
+  /* ── NO RESULTS ── */
+  .no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+    font-style: italic;
+    display: none;
+  }
+  .no-results.show { display: block; }
+
+  /* ── SEMESTER hidden when all cards hidden ── */
+  .semester-group.hidden { display: none; }
+
+  /* ── COUNT ── */
+  .results-count {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    letter-spacing: 0.02em;
+  }
+  .results-count span { color: var(--orange); font-weight: 600; }
+
+  @media (max-width: 600px) {
+    .filter-section { padding: 14px 16px; }
+    .main { padding: 24px 12px 48px; }
+    .session-card { padding: 16px 16px; }
+    .card-top { flex-direction: column; }
+    .page-header { padding: 32px 20px 28px; }
+    .page-header h1 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Past Sessions</h1>
+  <div class="accent-bar"></div>
+</div>
+
+<div class="filter-section">
+  <div class="filter-label">Filter by field</div>
+  <div class="filter-chips" id="filterChips">
+    <div class="chip all-chip active" data-field="all">All</div>
+    <div class="chip" data-field="Macro">Macro</div>
+    <div class="chip" data-field="EconHistory">Econ History</div>
+    <div class="chip" data-field="Development">Development</div>
+    <div class="chip" data-field="PoliticalEcon">Political Econ</div>
+    <div class="chip" data-field="Labor">Labor</div>
+    <div class="chip" data-field="IO">IO</div>
+    <div class="chip" data-field="MarketDesign">Market Design</div>
+    <div class="chip" data-field="PlatformDigital">Platform / Digital</div>
+    <div class="chip" data-field="Environmental">Environmental</div>
+    <div class="chip" data-field="Health">Health</div>
+    <div class="chip" data-field="UrbanRealEstate">Urban / Real Estate</div>
+    <div class="chip" data-field="Finance">Finance</div>
+    <div class="chip" data-field="Experimental">Experimental</div>
+    <div class="chip" data-field="LawEcon">Law &amp; Econ</div>
+    <div class="chip" data-field="ConsumerBehavior">Consumer Behavior</div>
+    <div class="chip" data-field="EconofScience">Econ of Science</div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="results-count" id="resultsCount"></div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- AY 2024/25 Spring Semester -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div class="semester-group" id="sem-2024fall">
+    <div class="semester-heading">Presentations in 2024 Fall Semester</div>
+
+    <div class="session-card" data-fields="Macro EconHistory">
+      <div class="card-top">
+        <div>
+          <div class="card-meta">
+            <span class="card-date">2024 / 10 / 9</span>
+            <span class="card-author">Joseph Hoon</span>
+            <span class="card-affil">NUS</span>
+          </div>
+          <div class="card-title">U.S. State-Level Economic Activity Since the Civil War</div>
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-Macro">Macro</span>
+        <span class="tag tag-EconHistory">Econ History</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">
+        Show abstract <span class="arrow">▾</span>
+      </button>
+      <div class="card-abstract">
+        We introduce a novel state-level dataset for the United States that covers 63 macroeconomic time series since 1863 and use it to estimate an annual index of state-level economic activity over a long term. We document several new stylized facts about U.S. state-level business cycles which allow us to identify determinants of aggregate fluctuations.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="Development PoliticalEcon">
+      <div class="card-top">
+        <div>
+          <div class="card-meta">
+            <span class="card-date">2024 / 10 / 23</span>
+            <span class="card-author">Jingyuan Guo</span>
+            <span class="card-affil">NUS</span>
+          </div>
+          <div class="card-title">State Capacity Building and Economic Growth: Evidence from Deng Xiaoping's Bloodless Coup D'état</div>
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-Development">Development</span>
+        <span class="tag tag-PoliticalEcon">Political Econ</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">
+        Show abstract <span class="arrow">▾</span>
+      </button>
+      <div class="card-abstract">
+        This paper explores how change in state capacity facilitates economic growth in an authoritarian system. Using a continuous treatment DiD strategy, it reveals that a one percent increase in officials' replacement intensity results in a 1.3 percent increase in GDP in post-Mao China, with effects driven by increases in human capital, governance capability, market-friendly industrialization, and pluralistic political institutions.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="Labor PlatformDigital">
+      <div class="card-top">
+        <div>
+          <div class="card-meta">
+            <span class="card-date">2024 / 11 / 6</span>
+            <span class="card-author">Jingman Cao</span>
+            <span class="card-affil">NUS</span>
+          </div>
+          <div class="card-title">Generative AI and Labor Market Inequality: Evidence from a Global Freelance Market</div>
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-Labor">Labor</span>
+        <span class="tag tag-PlatformDigital">Platform / Digital</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">
+        Show abstract <span class="arrow">▾</span>
+      </button>
+      <div class="card-abstract">
+        This paper examines the impact of ChatGPT on freelancers with varying levels of English proficiency in a global online labor market. Since ChatGPT's introduction, the earnings and job count gap between native and non-native English speakers has narrowed, with non-native speakers securing more complex and higher-paying jobs with enhanced productivity.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="IO Environmental Labor">
+      <div class="card-top">
+        <div>
+          <div class="card-meta">
+            <span class="card-date">2024 / 12 / 4</span>
+            <span class="card-author">Honghao Zheng</span>
+            <span class="card-affil">KU Leuven</span>
+          </div>
+          <div class="card-title">Death by Market Power: The Production-Safety Tradeoff in the Coal Mining Industry</div>
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-IO">IO</span>
+        <span class="tag tag-Environmental">Environmental</span>
+        <span class="tag tag-Labor">Labor</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">
+        Show abstract <span class="arrow">▾</span>
+      </button>
+      <div class="card-abstract">
+        This paper examines the effects of downstream buyer power from coal-fired power plants on the upstream coal mining industry in China. Using a shift-share IV, the study finds that buyer power exposure leads to higher provincial death rates by prompting mines to shift toward less capital-intensive, less safe technologies. Back-of-the-envelope calculations suggest the decline in buyer power explains 53% of the improvement in coal mining death rates.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- AY 2024/25 Spring Semester -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div class="semester-group" id="sem-2025spring">
+    <div class="semester-heading">Presentations in 2025 Spring Semester</div>
+
+    <div class="session-card" data-fields="Labor PlatformDigital">
+      <div class="card-top">
+        <div>
+          <div class="card-meta">
+            <span class="card-date">2025 / 2 / 28</span>
+            <span class="card-author">Jingman Cao</span>
+            <span class="card-affil">NUS</span>
+          </div>
+          <div class="card-title">When AI Writes Alike: Implications for Job Matching Efficiency</div>
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-Labor">Labor</span>
+        <span class="tag tag-PlatformDigital">Platform / Digital</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">
+        Show abstract <span class="arrow">▾</span>
+      </button>
+      <div class="card-abstract">
+        Studying Upwork's Job Post Generator, this paper finds that AI-driven content homogenization increases average pairwise cosine similarity of job postings by 18%. Clients who heavily rely on unmodified AI-generated content experience longer matching times, while those who actively edit AI-generated postings enjoy better matching efficiency, lower costs, and higher satisfaction.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="IO ConsumerBehavior">
+      <div class="card-top">
+        <div>
+          <div class="card-meta">
+            <span class="card-date">2025 / 3 / 14</span>
+            <span class="card-author">Xinbo Wang</span>
+            <span class="card-affil">NUS</span>
+          </div>
+          <div class="card-title">The Demand for Counterfeits</div>
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-IO">IO</span>
+        <span class="tag tag-ConsumerBehavior">Consumer Behavior</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">
+        Show abstract <span class="arrow">▾</span>
+      </button>
+      <div class="card-abstract">
+        Using 11 million orders from 2 million U.S. consumers on a cross-border e-commerce platform, this paper documents that socioeconomic status has a non-monotonic relationship with counterfeit purchasing, local culture (trust, social capital) significantly affects demand, and consumer-generated quality information can increase counterfeit sales.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- AY 2025/26 Fall Semester -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div class="semester-group" id="sem-2025fall">
+    <div class="semester-heading">Presentations in 2025 Fall Semester</div>
+
+    <div class="session-card" data-fields="PlatformDigital IO">
+      <div class="card-top">
+        <div>
+          <div class="card-meta">
+            <span class="card-date">2025 / 9 / 11</span>
+            <span class="card-author">Xinbo Wang</span>
+            <span class="card-affil">NUS</span>
+          </div>
+          <div class="card-title">Give a Fish or Teach to Fish — Evidence of Sharing Knowledge on an AIGC Platform</div>
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-PlatformDigital">Platform / Digital</span>
+        <span class="tag tag-IO">IO</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">
+        Show abstract <span class="arrow">▾</span>
+      </button>
+      <div class="card-abstract">
+        Abstract not available.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="IO MarketDesign PlatformDigital">
+      <div class="card-top">
+        <div>
+          <div class="card-meta">
+            <span class="card-date">2025 / 9 / 18</span>
+            <span class="card-author">Gaoyang Cai</span>
+            <span class="card-affil">Northwestern University</span>
+          </div>
+          <div class="card-title">Information Disclosure and Efficiency in Dynamic Negotiations: An Experimental and Structural Analysis</div>
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-IO">IO</span>
+        <span class="tag tag-MarketDesign">Market Design</span>
+        <span class="tag tag-PlatformDigital">Platform / Digital</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">
+        Show abstract <span class="arrow">▾</span>
+      </button>
+      <div class="card-abstract">
+        Using a large-scale panel experiment on an on-demand delivery platform, this paper shows that full price disclosure increases rejection rates and induces strategic price discrimination. A dynamic negotiation model reveals that partial disclosure policies achieve Pareto improvements in welfare by mitigating signaling externalities, with optimized thresholds increasing social welfare by 23% relative to no-disclosure and 14.1% relative to full-disclosure benchmarks.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="Labor PoliticalEcon">
+      <div class="card-top">
+        <div>
+          <div class="card-meta">
+            <span class="card-date">2025 / 9 / 25</span>
+            <span class="card-author">Orlando Betancourt</span>
+            <span class="card-affil">NUS</span>
+          </div>
+          <div class="card-title">Awards and Diversity: Evidence from Hollywood</div>
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-Labor">Labor</span>
+        <span class="tag tag-PoliticalEcon">Political Econ</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">
+        Show abstract <span class="arrow">▾</span>
+      </button>
+      <div class="card-abstract">
+        Exploiting the timing of Academy Award nominations since 1927, this paper finds that while nominations increase women's career activity, the boost is significantly larger for men. Women also face gaps in salary growth and future nomination likelihood, with network effects and strategic career choices driving much of the divergence.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="Health Environmental">
+      <div class="card-top">
+        <div>
+          <div class="card-meta">
+            <span class="card-date">2025 / 10 / 2</span>
+            <span class="card-author">Zhuoru Ma</span>
+            <span class="card-affil">NTU</span>
+          </div>
+          <div class="card-title">Beyond Diagnosis: The Hidden Health Burden of Long-term PM2.5 Exposure</div>
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-Health">Health</span>
+        <span class="tag tag-Environmental">Environmental</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">
+        Show abstract <span class="arrow">▾</span>
+      </button>
+      <div class="card-abstract">
+        Combining CHARLS data with satellite-based PM2.5 estimates and wind-direction IVs, this paper finds that air pollution significantly increases biomarker-identified respiratory disease risk (0.33 pp per 1% increase in PM2.5), while self-reported diagnoses show no corresponding effect — revealing systematic underdiagnosis particularly among middle-aged males and those in areas with limited healthcare resources.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="UrbanRealEstate Finance">
+      <div class="card-top">
+        <div>
+          <div class="card-meta">
+            <span class="card-date">2025 / 10 / 16</span>
+            <span class="card-author">Shuting Zhang</span>
+            <span class="card-affil">NUS</span>
+          </div>
+          <div class="card-title">Steady Home amid Turbulence: Equity Shocks and Reallocation into Housing</div>
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-UrbanRealEstate">Urban / Real Estate</span>
+        <span class="tag tag-Finance">Finance</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">
+        Show abstract <span class="arrow">▾</span>
+      </button>
+      <div class="card-abstract">
+        Using China's 2014–2015 stock market episode and granular housing transactions, this paper shows that sharp equity swings reallocate demand into property markets. Communities near listed firms show 1.25% larger price increases during the run-up and 2.15% larger increases after the crash, driven primarily by transactions involving employees of the listed firm.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="Finance Development LawEcon">
+      <div class="card-top">
+        <div>
+          <div class="card-meta">
+            <span class="card-date">2025 / 10 / 23</span>
+            <span class="card-author">Zhu Jianfei</span>
+            <span class="card-affil">HKU</span>
+          </div>
+          <div class="card-title">From Law to Livelihood: How Legal Development Shapes Informal Finance and Household Behavior</div>
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-Finance">Finance</span>
+        <span class="tag tag-Development">Development</span>
+        <span class="tag tag-LawEcon">Law &amp; Econ</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">
+        Show abstract <span class="arrow">▾</span>
+      </button>
+      <div class="card-abstract">
+        Leveraging a Chinese reform strengthening protections for digital P2P lenders, this paper uses a DiD framework on FinTech transaction data to show that stronger legal enforcement expanded informal credit access, raised repayment rates, and induced substitution from formal to informal financing — with borrowers increasing discretionary spending on human capital such as vocational training.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="Finance Experimental">
+      <div class="card-top">
+        <div>
+          <div class="card-meta">
+            <span class="card-date">2025 / 10 / 30</span>
+            <span class="card-author">Jiani Wu</span>
+            <span class="card-affil">NTU</span>
+          </div>
+          <div class="card-title">How Investor Information Linkages Affect Trading Aggressiveness, Price Informativeness, and Post-Earnings-Announcement Drift</div>
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-Finance">Finance</span>
+        <span class="tag tag-Experimental">Experimental</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">
+        Show abstract <span class="arrow">▾</span>
+      </button>
+      <div class="card-abstract">
+        This dynamic asset market experiment finds that trading aggressiveness first increases then declines as information linkages get denser, while price informativeness continuously improves. Denser pre-announcement information linkages reduce the magnitude of post-earnings-announcement drift, confirming that social connectedness is an important determinant of market efficiency.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="Environmental UrbanRealEstate">
+      <div class="card-top">
+        <div>
+          <div class="card-meta">
+            <span class="card-date">2025 / 11 / 27</span>
+            <span class="card-author">Zhihao Han</span>
+            <span class="card-affil">NUS</span>
+          </div>
+          <div class="card-title">NIMBY: Noise from the Build-Out of Clean Infrastructure and the Housing Market</div>
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-Environmental">Environmental</span>
+        <span class="tag tag-UrbanRealEstate">Urban / Real Estate</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">
+        Show abstract <span class="arrow">▾</span>
+      </button>
+      <div class="card-abstract">
+        Abstract not available.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <!-- AY 2025/26 Spring Semester -->
+  <!-- ══════════════════════════════════════════════════ -->
+  <div class="semester-group" id="sem-2026spring">
+    <div class="semester-heading">Presentations in 2026 Spring Semester</div>
+
+    <div class="session-card" data-fields="IO EconofScience">
+      <div class="card-top">
+        <div>
+          <div class="card-meta">
+            <span class="card-date">2026 / 5 / 12</span>
+            <span class="card-author">En Qi Teo</span>
+            <span class="card-affil">NUS / TSE</span>
+          </div>
+          <div class="card-title">Submissions Related to Editors' Research Are More Likely to Succeed: Evidence from Economics Journals</div>
+        </div>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-IO">IO</span>
+        <span class="tag tag-EconofScience">Econ of Science</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">
+        Show abstract <span class="arrow">▾</span>
+      </button>
+      <div class="card-abstract">
+        Examining four leading economics journals, this paper finds that editors are less likely to desk reject manuscripts related to their own research interests. Structural estimates indicate the mechanism is strategic submission by authors rather than editorial favoritism, with more productive scholars disproportionately likely to submit related manuscripts.
+      </div>
+    </div>
+  </div>
+
+  <div class="no-results" id="noResults">No sessions match the selected field.</div>
+</div>
+
+<script>
+  const chips = document.querySelectorAll('.chip');
+  const cards = document.querySelectorAll('.session-card');
+  const semGroups = document.querySelectorAll('.semester-group');
+  const noResults = document.getElementById('noResults');
+  const resultsCount = document.getElementById('resultsCount');
+  let activeField = 'all';
+
+  function updateCount() {
+    const visible = document.querySelectorAll('.session-card:not(.hidden)').length;
+    const total = cards.length;
+    if (activeField === 'all') {
+      resultsCount.innerHTML = `Showing all <span>${total}</span> sessions`;
+    } else {
+      resultsCount.innerHTML = `Showing <span>${visible}</span> of ${total} sessions`;
+    }
+  }
+
+  function filterCards(field) {
+    activeField = field;
+    let anyVisible = false;
+
+    semGroups.forEach(group => {
+      const groupCards = group.querySelectorAll('.session-card');
+      let groupVisible = false;
+      groupCards.forEach(card => {
+        const fields = card.dataset.fields.split(' ');
+        const show = field === 'all' || fields.includes(field);
+        card.classList.toggle('hidden', !show);
+        if (show) { groupVisible = true; anyVisible = true; }
+      });
+      group.classList.toggle('hidden', !groupVisible);
+    });
+
+    noResults.classList.toggle('show', !anyVisible);
+    updateCount();
+  }
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      filterCards(chip.dataset.field);
+    });
+  });
+
+  function toggleAbstract(btn) {
+    const abstract = btn.nextElementSibling;
+    const isOpen = abstract.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.innerHTML = isOpen
+      ? 'Hide abstract <span class="arrow">▾</span>'
+      : 'Show abstract <span class="arrow">▾</span>';
+  }
+
+  // Init count
+  updateCount();
+</script>
+</body>
+</html>
