@@ -24,45 +24,19 @@
 
   body {
     font-family: 'Source Serif 4', Georgia, serif;
-    background: var(--off-white);
+    background: var(--white);
     color: var(--text);
     font-size: 15px;
     line-height: 1.65;
   }
 
-  /* ── HEADER ── */
-  .page-header {
-    background: var(--navy);
-    padding: 48px 40px 40px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .page-header::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(232,119,34,0.08) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .page-header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    color: var(--white);
-    letter-spacing: 0.01em;
-    margin-bottom: 6px;
-  }
-  .page-header .accent-bar {
-    width: 52px; height: 3px;
-    background: var(--orange);
-    margin: 12px auto 0;
-    border-radius: 2px;
-  }
+
 
   /* ── FILTER BAR ── */
   .filter-section {
     background: var(--white);
     border-bottom: 1px solid var(--border);
-    padding: 18px 40px;
+    padding: 14px 24px;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -112,9 +86,9 @@
 
   /* ── MAIN CONTENT ── */
   .main {
-    max-width: 900px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 36px 24px 60px;
+    padding: 20px 24px 60px;
   }
 
   /* ── SEMESTER GROUPS ── */
@@ -287,11 +261,6 @@
 </style>
 </head>
 <body>
-
-<div class="page-header">
-  <h1>Past Sessions</h1>
-  <div class="accent-bar"></div>
-</div>
 
 <div class="filter-section">
   <div class="filter-label">Filter by field</div>
