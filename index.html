@@ -12,12 +12,10 @@
     --orange: #e87722;
     --orange-light: #f5a54a;
     --white: #ffffff;
-    --off-white: #f8f6f2;
     --text: #2c2c2c;
     --text-muted: #6b6b6b;
     --border: #e2ddd8;
     --card-bg: #ffffff;
-    --tag-bg: #f0ede8;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,9 +28,6 @@
     line-height: 1.65;
   }
 
-
-
-  /* ── FILTER BAR ── */
   .filter-section {
     background: var(--white);
     border-bottom: 1px solid var(--border);
@@ -50,12 +45,7 @@
     margin-bottom: 10px;
     font-weight: 600;
   }
-  .filter-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    align-items: center;
-  }
+  .filter-chips { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
   .chip {
     padding: 5px 13px;
     border-radius: 20px;
@@ -69,32 +59,13 @@
     user-select: none;
     white-space: nowrap;
   }
-  .chip:hover {
-    border-color: var(--orange);
-    color: var(--orange);
-  }
-  .chip.active {
-    background: var(--orange);
-    border-color: var(--orange);
-    color: var(--white);
-    font-weight: 600;
-  }
-  .chip.all-chip.active {
-    background: var(--navy);
-    border-color: var(--navy);
-  }
+  .chip:hover { border-color: var(--orange); color: var(--orange); }
+  .chip.active { background: var(--orange); border-color: var(--orange); color: var(--white); font-weight: 600; }
+  .chip.all-chip.active { background: var(--navy); border-color: var(--navy); }
 
-  /* ── MAIN CONTENT ── */
-  .main {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 20px 24px 60px;
-  }
+  .main { max-width: 100%; margin: 0 auto; padding: 20px 24px 60px; }
 
-  /* ── SEMESTER GROUPS ── */
-  .semester-group {
-    margin-bottom: 48px;
-  }
+  .semester-group { margin-bottom: 48px; }
   .semester-heading {
     font-family: 'Playfair Display', serif;
     font-size: 1rem;
@@ -106,7 +77,6 @@
     border-bottom: 1px solid var(--border);
   }
 
-  /* ── SESSION CARD ── */
   .session-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
@@ -121,142 +91,56 @@
     transform: translateY(-1px);
     border-left-color: var(--orange);
   }
-  .session-card.hidden {
-    display: none;
-  }
+  .session-card.hidden { display: none; }
 
-  .card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  .card-meta {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .card-date {
-    font-size: 12px;
-    color: var(--text-muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .card-author {
-    font-weight: 600;
-    font-size: 14.5px;
-    color: var(--navy);
-  }
-  .card-affil {
-    font-size: 13px;
-    color: var(--text-muted);
-    font-style: italic;
-  }
-
-  .card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    color: var(--text);
-    margin: 10px 0 8px;
-    line-height: 1.4;
-  }
+  .card-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .card-date { font-size: 12px; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; white-space: nowrap; }
+  .card-author { font-weight: 600; font-size: 14.5px; color: var(--navy); }
+  .card-affil { font-size: 13px; color: var(--text-muted); font-style: italic; }
+  .card-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--text); margin: 10px 0 8px; line-height: 1.4; }
 
   .card-abstract {
-    font-size: 13.5px;
-    color: var(--text-muted);
-    line-height: 1.65;
-    display: none;
-    margin-top: 10px;
-    padding-top: 10px;
+    font-size: 13.5px; color: var(--text-muted); line-height: 1.65;
+    display: none; margin-top: 10px; padding-top: 10px;
     border-top: 1px dashed var(--border);
   }
   .card-abstract.open { display: block; }
 
   .toggle-abstract {
-    font-size: 12px;
-    color: var(--orange);
-    cursor: pointer;
-    user-select: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    margin-top: 6px;
-    background: none;
-    border: none;
-    font-family: inherit;
-    padding: 0;
-    transition: color 0.15s;
+    font-size: 12px; color: var(--orange); cursor: pointer; user-select: none;
+    display: inline-flex; align-items: center; gap: 4px; margin-top: 6px;
+    background: none; border: none; font-family: inherit; padding: 0; transition: color 0.15s;
   }
   .toggle-abstract:hover { color: var(--orange-light); }
   .toggle-abstract .arrow { transition: transform 0.2s; display: inline-block; }
   .toggle-abstract.open .arrow { transform: rotate(180deg); }
 
-  .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 10px;
-  }
-  .tag {
-    font-size: 11px;
-    padding: 2px 9px;
-    border-radius: 12px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    white-space: nowrap;
-  }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .tag { font-size: 11px; padding: 2px 9px; border-radius: 12px; font-weight: 600; letter-spacing: 0.04em; white-space: nowrap; }
 
-  /* Field tag colours */
-  .tag-Macro           { background: #e8f0fb; color: #2c5faa; }
-  .tag-EconHistory     { background: #f3ece0; color: #8b5e2a; }
-  .tag-Development     { background: #e6f5ec; color: #2a7a48; }
-  .tag-PoliticalEcon   { background: #f5e6f5; color: #7a2a87; }
-  .tag-Labor           { background: #e9f5fb; color: #1a6e91; }
-  .tag-IO              { background: #fff0e6; color: #c25a00; }
-  .tag-MarketDesign    { background: #faf0e6; color: #b5651d; }
-  .tag-PlatformDigital { background: #e8f8f5; color: #1a7a6e; }
-  .tag-Environmental   { background: #e8f5e8; color: #2e7d32; }
-  .tag-Health          { background: #fce8e8; color: #c62828; }
-  .tag-UrbanRealEstate { background: #f0eaf8; color: #6a1b9a; }
-  .tag-Finance         { background: #e3f2fd; color: #1565c0; }
-  .tag-Experimental    { background: #fff8e1; color: #e65100; }
-  .tag-LawEcon         { background: #f1f8e9; color: #558b2f; }
-  .tag-ConsumerBehavior{ background: #fce4ec; color: #ad1457; }
-  .tag-EconofScience   { background: #e0f7fa; color: #00695c; }
+  .tag-BehavioralandExperiment  { background: #fff8e1; color: #e65100; }
+  .tag-Development               { background: #e6f5ec; color: #2a7a48; }
+  .tag-EconomicHistory           { background: #f3ece0; color: #8b5e2a; }
+  .tag-EnvironmentalandResource  { background: #e8f5e8; color: #2e7d32; }
+  .tag-Health                    { background: #fce8e8; color: #c62828; }
+  .tag-IndustrialOrganization    { background: #fff0e6; color: #c25a00; }
+  .tag-InnovationandGrowth       { background: #e8f8f5; color: #1a7a6e; }
+  .tag-LaborandEducation         { background: #e9f5fb; color: #1a6e91; }
+  .tag-PublicandPoliticalEconomy { background: #f5e6f5; color: #7a2a87; }
+  .tag-TransportandUrban         { background: #f0eaf8; color: #6a1b9a; }
+  .tag-Other                     { background: #f0f0f0; color: #555555; }
 
-  /* ── NO RESULTS ── */
-  .no-results {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--text-muted);
-    font-style: italic;
-    display: none;
-  }
+  .no-results { text-align: center; padding: 60px 20px; color: var(--text-muted); font-style: italic; display: none; }
   .no-results.show { display: block; }
-
-  /* ── SEMESTER hidden when all cards hidden ── */
   .semester-group.hidden { display: none; }
 
-  /* ── COUNT ── */
-  .results-count {
-    font-size: 12.5px;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-    letter-spacing: 0.02em;
-  }
+  .results-count { font-size: 12.5px; color: var(--text-muted); margin-bottom: 20px; letter-spacing: 0.02em; }
   .results-count span { color: var(--orange); font-weight: 600; }
 
   @media (max-width: 600px) {
     .filter-section { padding: 14px 16px; }
     .main { padding: 24px 12px 48px; }
     .session-card { padding: 16px 16px; }
-    .card-top { flex-direction: column; }
-    .page-header { padding: 32px 20px 28px; }
-    .page-header h1 { font-size: 1.5rem; }
   }
 </style>
 </head>
@@ -266,395 +150,259 @@
   <div class="filter-label">Filter by field</div>
   <div class="filter-chips" id="filterChips">
     <div class="chip all-chip active" data-field="all">All</div>
-    <div class="chip" data-field="Macro">Macro</div>
-    <div class="chip" data-field="EconHistory">Econ History</div>
+    <div class="chip" data-field="BehavioralandExperiment">Behavioral &amp; Experiment</div>
     <div class="chip" data-field="Development">Development</div>
-    <div class="chip" data-field="PoliticalEcon">Political Econ</div>
-    <div class="chip" data-field="Labor">Labor</div>
-    <div class="chip" data-field="IO">IO</div>
-    <div class="chip" data-field="MarketDesign">Market Design</div>
-    <div class="chip" data-field="PlatformDigital">Platform / Digital</div>
-    <div class="chip" data-field="Environmental">Environmental</div>
+    <div class="chip" data-field="EconomicHistory">Economic History</div>
+    <div class="chip" data-field="EnvironmentalandResource">Environmental &amp; Resource</div>
     <div class="chip" data-field="Health">Health</div>
-    <div class="chip" data-field="UrbanRealEstate">Urban / Real Estate</div>
-    <div class="chip" data-field="Finance">Finance</div>
-    <div class="chip" data-field="Experimental">Experimental</div>
-    <div class="chip" data-field="LawEcon">Law &amp; Econ</div>
-    <div class="chip" data-field="ConsumerBehavior">Consumer Behavior</div>
-    <div class="chip" data-field="EconofScience">Econ of Science</div>
+    <div class="chip" data-field="IndustrialOrganization">Industrial Organization</div>
+    <div class="chip" data-field="InnovationandGrowth">Innovation &amp; Growth</div>
+    <div class="chip" data-field="LaborandEducation">Labor &amp; Education</div>
+    <div class="chip" data-field="PublicandPoliticalEconomy">Public &amp; Political Economy</div>
+    <div class="chip" data-field="TransportandUrban">Transport &amp; Urban</div>
+    <div class="chip" data-field="Other">Other</div>
   </div>
 </div>
 
 <div class="main">
   <div class="results-count" id="resultsCount"></div>
 
-  <!-- ══════════════════════════════════════════════════ -->
-  <!-- AY 2024/25 Spring Semester -->
-  <!-- ══════════════════════════════════════════════════ -->
+  <!-- 2025 Fall -->
+  <div class="semester-group" id="sem-2025fall">
+    <div class="semester-heading">Presentations in 2025 Fall Semester</div>
+
+    <div class="session-card" data-fields="EnvironmentalandResource TransportandUrban">
+      <div class="card-meta">
+        <span class="card-date">2025 / 11 / 27</span>
+        <span class="card-author">Zhihao Han</span>
+        <span class="card-affil">NUS</span>
+      </div>
+      <div class="card-title">NIMBY: Noise from the Build-Out of Clean Infrastructure and the Housing Market</div>
+      <div class="tag-row">
+        <span class="tag tag-EnvironmentalandResource">Environmental &amp; Resource</span>
+        <span class="tag tag-TransportandUrban">Transport &amp; Urban</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">Show abstract <span class="arrow">▾</span></button>
+      <div class="card-abstract">Abstract not available.</div>
+    </div>
+
+    <div class="session-card" data-fields="Other BehavioralandExperiment">
+      <div class="card-meta">
+        <span class="card-date">2025 / 10 / 30</span>
+        <span class="card-author">Jiani Wu</span>
+        <span class="card-affil">NTU</span>
+      </div>
+      <div class="card-title">How Investor Information Linkages Affect Trading Aggressiveness, Price Informativeness, and Post-Earnings-Announcement Drift</div>
+      <div class="tag-row">
+        <span class="tag tag-Other">Other</span>
+        <span class="tag tag-BehavioralandExperiment">Behavioral &amp; Experiment</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">Show abstract <span class="arrow">▾</span></button>
+      <div class="card-abstract">
+        We design a dynamic asset market experiment with exogenous information linkages among investors within a public earnings announcement framework. Confirming recent theoretical predictions, we find that trading aggressiveness and volume in the pre-announcement period first increase and then decline while price informativeness continues to improve as information linkages get denser. Information sharing improves traders' inference of the fundamental value and enhances the quality of pre-announcement information among individual investors. This results in a weaker response to the subsequent public earnings announcement, with the magnitude of the post-earnings-announcement drift declining in the density of the pre-announcement information linkages. We demonstrate that social connectedness is an important determinant of market efficiency.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="Other Development PublicandPoliticalEconomy">
+      <div class="card-meta">
+        <span class="card-date">2025 / 10 / 23</span>
+        <span class="card-author">Zhu Jianfei</span>
+        <span class="card-affil">HKU</span>
+      </div>
+      <div class="card-title">From Law to Livelihood: How Legal Development Shapes Informal Finance and Household Behavior</div>
+      <div class="tag-row">
+        <span class="tag tag-Other">Other</span>
+        <span class="tag tag-Development">Development</span>
+        <span class="tag tag-PublicandPoliticalEconomy">Public &amp; Political Economy</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">Show abstract <span class="arrow">▾</span></button>
+      <div class="card-abstract">
+        This study examines how legal institutional development shapes informal finance by leveraging a Chinese reform that strengthened protections for digital peer-to-peer lenders. Using a Difference-in-Differences (DiD) framework and transaction-level data from a leading Chinese FinTech platform, I quantify post-reform changes in lending and borrowing within social networks. Strengthened legal enforcement expanded access to informal credit—especially among socially distant peers—and accelerated the formalization of digital transaction records. For borrowers, the reform increased repayment rates in informal markets, induced substitution from formal to informal financing, and raised discretionary spending, particularly on human capital such as vocational training and professional tools. These findings highlight how legal institutions both regulate and legitimize informal finance, with implications for financial inclusion and household welfare.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="TransportandUrban Other">
+      <div class="card-meta">
+        <span class="card-date">2025 / 10 / 16</span>
+        <span class="card-author">Shuting Zhang</span>
+        <span class="card-affil">NUS</span>
+      </div>
+      <div class="card-title">Steady Home amid Turbulence: Equity Shocks and Reallocation into Housing</div>
+      <div class="tag-row">
+        <span class="tag tag-TransportandUrban">Transport &amp; Urban</span>
+        <span class="tag tag-Other">Other</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">Show abstract <span class="arrow">▾</span></button>
+      <div class="card-abstract">
+        Household wealth is concentrated in housing and equities. We test whether sharp equity swings reallocate demand into property market. Using China's 2014 to 2015 stock market episode, we combine granular and high-frequency housing transactions with equity data and estimate a difference-in-differences design that contrasts communities 0–1 km with those 1–4 km from the same listed firm within month. During the run-up, the near ring records a 1.25% larger price increase relative to the farther ring, and after the crash the near-firm premium is 2.15%. To speak to the mechanisms, residents living close to listed firms are more likely to be employees and better informed about equity conditions, and triple-difference estimates that interact proximity with realized equity movements support this interpretation: when realized volatility is higher, the near-firm differential compresses and can reverse, with a 3.12% decline in the run-up and a 2.85% depreciation after the crash for high-volatility firms. Heterogeneity by buyer and seller links to the firm indicates that transactions involving residents employed by the listed firm within 1 km account for much of the response. Volume effects are insignificantly small, consistent with price revaluation on the intensive margin. Results are robust to alternative specifications and stricter controls and are consistent with local asset reallocation.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="Health EnvironmentalandResource">
+      <div class="card-meta">
+        <span class="card-date">2025 / 10 / 2</span>
+        <span class="card-author">Zhuoru Ma</span>
+        <span class="card-affil">NTU</span>
+      </div>
+      <div class="card-title">Beyond Diagnosis: The Hidden Health Burden of Long-term PM2.5 Exposure</div>
+      <div class="tag-row">
+        <span class="tag tag-Health">Health</span>
+        <span class="tag tag-EnvironmentalandResource">Environmental &amp; Resource</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">Show abstract <span class="arrow">▾</span></button>
+      <div class="card-abstract">
+        This study investigates the hidden health burden of long-term air pollution exposure by comparing self-reported clinical diagnoses with biomarker-identified indicators of respiratory disease. Self-reported diagnoses, commonly used in economic analyses, may underestimate actual disease burden due to underdiagnosis and differential access to healthcare. We examine whether objective biomarkers reveal stronger pollution-health associations than conventional survey-based measures. We combine nationally representative data from the China Health and Retirement Longitudinal Survey (CHARLS) with high-resolution satellite-based PM2.5 estimates. To address endogeneity in pollution exposure, we construct instrumental variables based on share of wind direction days interacted with geographic clusters, leveraging quasi-random variation in atmospheric transport patterns. We find that air pollution significantly increases biomarker-identified risks of respiratory disease, by 0.33 percentage points per 1% increase in PM2.5, while no corresponding effect is observed in self-reported diagnoses. Similar patterns of underdiagnosis are found for cardiovascular, kidney and metabolic conditions. Underdiagnosis is more prominent among middle-aged individuals, males, those exposed to secondhand smoke, those with better childhood health, and those living in areas with limited healthcare resources. Our findings suggest that reliance on self-reported diagnoses may systematically understate the true health impacts of air pollution.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="LaborandEducation PublicandPoliticalEconomy">
+      <div class="card-meta">
+        <span class="card-date">2025 / 9 / 25</span>
+        <span class="card-author">Orlando Betancourt</span>
+        <span class="card-affil">NUS</span>
+      </div>
+      <div class="card-title">Awards and Diversity: Evidence from Hollywood</div>
+      <div class="tag-row">
+        <span class="tag tag-LaborandEducation">Labor &amp; Education</span>
+        <span class="tag tag-PublicandPoliticalEconomy">Public &amp; Political Economy</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">Show abstract <span class="arrow">▾</span></button>
+      <div class="card-abstract">
+        I examine whether the recognition associated with major awards has different career effects depending on minority status. Exploiting the timing of Academy Award nominations since 1927, I focus on women as the underrepresented group. I find that while a nomination increases women's subsequent career activity -as measured by the number of projects and lead roles-, this increase is significantly larger for men. Women also face gaps in salary growth and in the likelihood of future nominations. Exploring mechanisms, I show that men expand collaborations with other nominees and pursue more "Oscar-bait" projects, suggesting that network effects and strategic career choices might drive the gaps. I rule out childbearing and differences in project quality as alternative explanations.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="IndustrialOrganization InnovationandGrowth">
+      <div class="card-meta">
+        <span class="card-date">2025 / 9 / 18</span>
+        <span class="card-author">Gaoyang Cai</span>
+        <span class="card-affil">Northwestern University</span>
+      </div>
+      <div class="card-title">Information Disclosure and Efficiency in Dynamic Negotiations: An Experimental and Structural Analysis</div>
+      <div class="tag-row">
+        <span class="tag tag-IndustrialOrganization">Industrial Organization</span>
+        <span class="tag tag-InnovationandGrowth">Innovation &amp; Growth</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">Show abstract <span class="arrow">▾</span></button>
+      <div class="card-abstract">
+        This paper examines the causal effects of information disclosure policies on dynamic price negotiations. While information disclosure facilitates informed decision-making by enabling users to reveal private information, it also induces strategic signaling and price discrimination that can undermine market efficiency. I use a large-scale panel experiment on an on-demand delivery platform in which drivers offer delivery prices to shippers (customers). The platform randomly assigns cities either to a treatment group—where drivers observe the lowest prices previously rejected by shippers (full disclosure)—or to a control group, where no such information is disclosed (no disclosure). I find that full disclosure significantly increases shippers' rejection rates, holding offer prices fixed. In response, drivers strategically lower their offer prices and price-discriminate based on shippers' rejection records. Full disclosure increases the order transaction probability but lengthens transaction duration. To quantify equilibrium and welfare impacts of information disclosure policies, I develop a dynamic negotiation model, estimate its primitives on treatment data, and validate the model on holdout control data. I find that full disclosure benefits low-value shippers—who signal low valuations through strategic rejections, obtaining lower prices despite longer waits—while harming high-value shippers through driver price discrimination. Counterfactual analyses show that partial disclosure policies—disclosing only the lowest shipper-rejected prices below a threshold—achieve Pareto improvements in user welfare and platform revenue by mitigating negative signaling externalities, reducing driver markups, and enhancing market efficiency. Comparative statics show that the disclosure thresholds that maximize driver profits, platform revenue, and social welfare rise as shippers become less patient, as exit rates increase, or as drivers arrive less often. Targeting market primitives to optimize market-specific disclosure thresholds increases social welfare by 23.0% and 14.1% relative to the no disclosure and full disclosure benchmarks, respectively.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="InnovationandGrowth IndustrialOrganization">
+      <div class="card-meta">
+        <span class="card-date">2025 / 9 / 11</span>
+        <span class="card-author">Xinbo Wang</span>
+        <span class="card-affil">NUS</span>
+      </div>
+      <div class="card-title">Give a Fish or Teach to Fish — Evidence of Sharing Knowledge on an AIGC Platform</div>
+      <div class="tag-row">
+        <span class="tag tag-InnovationandGrowth">Innovation &amp; Growth</span>
+        <span class="tag tag-IndustrialOrganization">Industrial Organization</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">Show abstract <span class="arrow">▾</span></button>
+      <div class="card-abstract">Abstract not available.</div>
+    </div>
+  </div>
+
+  <!-- 2025 Spring -->
+  <div class="semester-group" id="sem-2025spring">
+    <div class="semester-heading">Presentations in 2025 Spring Semester</div>
+
+    <div class="session-card" data-fields="IndustrialOrganization BehavioralandExperiment">
+      <div class="card-meta">
+        <span class="card-date">2025 / 3 / 14</span>
+        <span class="card-author">Xinbo Wang</span>
+        <span class="card-affil">NUS</span>
+      </div>
+      <div class="card-title">The Demand for Counterfeits</div>
+      <div class="tag-row">
+        <span class="tag tag-IndustrialOrganization">Industrial Organization</span>
+        <span class="tag tag-BehavioralandExperiment">Behavioral &amp; Experiment</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">Show abstract <span class="arrow">▾</span></button>
+      <div class="card-abstract">
+        Using 11 million orders from 2 million U.S. consumers on a major cross-border e-commerce platform, we document three main findings on counterfeit demand. First, socioeconomic status has a non-monotonic relationship with purchasing behavior: both low- and high-income consumers purchase more fakes than those in the middle. Second, local culture exerts a significant effect: communities characterized by lower trust buy more counterfeits, while communities with stronger social capital buy less counterfeits. Third, market design matters: consumer-generated product-quality information can increase counterfeit sales. We explore heterogeneous effects for each finding and discuss their policy implications.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="LaborandEducation InnovationandGrowth">
+      <div class="card-meta">
+        <span class="card-date">2025 / 2 / 28</span>
+        <span class="card-author">Jingman Cao</span>
+        <span class="card-affil">NUS</span>
+      </div>
+      <div class="card-title">When AI Writes Alike: Implications for Job Matching Efficiency</div>
+      <div class="tag-row">
+        <span class="tag tag-LaborandEducation">Labor &amp; Education</span>
+        <span class="tag tag-InnovationandGrowth">Innovation &amp; Growth</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">Show abstract <span class="arrow">▾</span></button>
+      <div class="card-abstract">
+        Online platforms are introducing various kinds of generative AI tools after the emerging of ChatGPT. Although these tools could improve work productivity, they could also introduce issues of writing content convergence, which might result in increased screening difficulty and lower matching efficiency. In this paper, we study Job Post Generator, a generative AI tool launched by a freelance platform, Upwork. After its introduction, the average pairwise cosine similarity of job postings increased by 18% from 2023 March to 2024 September. We find that clients who use the Job Post Generator match with freelancers more quickly on average. However, those who rely heavily on AI-generated content with minimal modifications experience longer matching times. In contrast, clients who actively edit and customize AI-generated job postings experience significant improvements in matching efficiency, benefit from lower payment costs, and report higher satisfaction with freelancers' performance. We provide evidence that the homogenization of job postings due to AI-driven writing can negatively impact online job matching efficiency. Our findings suggest that online platforms offering generative AI tools should encourage users to modify and personalize AI-generated content to achieve better outcomes.
+      </div>
+    </div>
+  </div>
+
+  <!-- 2024 Fall -->
   <div class="semester-group" id="sem-2024fall">
     <div class="semester-heading">Presentations in 2024 Fall Semester</div>
 
-    <div class="session-card" data-fields="Macro EconHistory">
-      <div class="card-top">
-        <div>
-          <div class="card-meta">
-            <span class="card-date">2024 / 10 / 9</span>
-            <span class="card-author">Joseph Hoon</span>
-            <span class="card-affil">NUS</span>
-          </div>
-          <div class="card-title">U.S. State-Level Economic Activity Since the Civil War</div>
-        </div>
+    <div class="session-card" data-fields="IndustrialOrganization EnvironmentalandResource LaborandEducation">
+      <div class="card-meta">
+        <span class="card-date">2024 / 12 / 4</span>
+        <span class="card-author">Honghao Zheng</span>
+        <span class="card-affil">KU Leuven</span>
       </div>
+      <div class="card-title">Death by Market Power: The Production-Safety Tradeoff in the Coal Mining Industry</div>
       <div class="tag-row">
-        <span class="tag tag-Macro">Macro</span>
-        <span class="tag tag-EconHistory">Econ History</span>
+        <span class="tag tag-IndustrialOrganization">Industrial Organization</span>
+        <span class="tag tag-EnvironmentalandResource">Environmental &amp; Resource</span>
+        <span class="tag tag-LaborandEducation">Labor &amp; Education</span>
       </div>
-      <button class="toggle-abstract" onclick="toggleAbstract(this)">
-        Show abstract <span class="arrow">▾</span>
-      </button>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">Show abstract <span class="arrow">▾</span></button>
+      <div class="card-abstract">
+        I examine the effects of downstream buyer power from coal-fired power plants on the organization of production in the upstream coal mining industry in China. I estimate a structural model of coal mines featuring (i) joint production of coal and worker safety and (ii) endogenous safety choices and factor-augmenting productivity. To identify the causal effects of buyer power on coal mining outcomes, I employ a shift-share instrumental variable, leveraging exogenous variations stemming from a restructuring of the electricity sector. I find an unintended but life-and-death consequence associated with market power—buyer power exposure leads to higher provincial death rates, also corroborated by lower safety-coal output ratios at the mine level. The underlying mechanism is that exposure to buyer power prompts coal mines to shift toward less capital-intensive, more traditional, and less safe mining technologies, leading to higher death rates. Finally, back-of-the-envelope calculations suggest that the decline in buyer power due to the electricity sector restructuring explains 53% of the improvement in coal mining death rates. The findings provide a new perspective on understanding the shared experience of high mining death rates in developed and developing countries over different historical periods.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="LaborandEducation InnovationandGrowth">
+      <div class="card-meta">
+        <span class="card-date">2024 / 11 / 6</span>
+        <span class="card-author">Jingman Cao</span>
+        <span class="card-affil">NUS</span>
+      </div>
+      <div class="card-title">Generative AI and Labor Market Inequality: Evidence from a Global Freelance Market</div>
+      <div class="tag-row">
+        <span class="tag tag-LaborandEducation">Labor &amp; Education</span>
+        <span class="tag tag-InnovationandGrowth">Innovation &amp; Growth</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">Show abstract <span class="arrow">▾</span></button>
+      <div class="card-abstract">
+        Generative AI technologies have the potential to either exacerbate or alleviate labor market inequalities. This paper examines the impact of ChatGPT on freelancers with varying levels of English proficiency in a global online labor market. We find that, since ChatGPT's introduction, the earnings and job count gap between native and non-native English speakers have narrowed. Our analysis reveals that non-native speakers have become more competitive, securing more complex and higher-paying jobs with enhanced productivity, and experiencing lower job displacement. These findings suggest that generative AI can play a meaningful role in reducing disparities in employment opportunities in the global labor market.
+      </div>
+    </div>
+
+    <div class="session-card" data-fields="Other EconomicHistory">
+      <div class="card-meta">
+        <span class="card-date">2024 / 10 / 9</span>
+        <span class="card-author">Joseph Hoon</span>
+        <span class="card-affil">NUS</span>
+      </div>
+      <div class="card-title">U.S. State-Level Economic Activity Since the Civil War</div>
+      <div class="tag-row">
+        <span class="tag tag-Other">Other</span>
+        <span class="tag tag-EconomicHistory">Economic History</span>
+      </div>
+      <button class="toggle-abstract" onclick="toggleAbstract(this)">Show abstract <span class="arrow">▾</span></button>
       <div class="card-abstract">
         We introduce a novel state-level dataset for the United States that covers 63 macroeconomic time series since 1863 and use it to estimate an annual index of state-level economic activity over a long term. We document several new stylized facts about U.S. state-level business cycles which allow us to identify determinants of aggregate fluctuations.
       </div>
     </div>
-
-    <div class="session-card" data-fields="Development PoliticalEcon">
-      <div class="card-top">
-        <div>
-          <div class="card-meta">
-            <span class="card-date">2024 / 10 / 23</span>
-            <span class="card-author">Jingyuan Guo</span>
-            <span class="card-affil">NUS</span>
-          </div>
-          <div class="card-title">State Capacity Building and Economic Growth: Evidence from Deng Xiaoping's Bloodless Coup D'état</div>
-        </div>
-      </div>
-      <div class="tag-row">
-        <span class="tag tag-Development">Development</span>
-        <span class="tag tag-PoliticalEcon">Political Econ</span>
-      </div>
-      <button class="toggle-abstract" onclick="toggleAbstract(this)">
-        Show abstract <span class="arrow">▾</span>
-      </button>
-      <div class="card-abstract">
-       This paper explores how change in state capacity facilitates economic growth in an authoritarian system. This is the case of Deng Xiaoping's Replacement of government officials, with new army of better-educated technocrats uprooting and replacing Maoist revolutionary cadres. With a continuous treatment DiD strategy, this paper reveals that one percent increase in officials' replacement intensity results in 1.3 percent increase in GDP in post-Mao China. Moreover, these effects are robust across various technical concerns and maintain stable over four decades, and further explain 18.05 percent of the contemporary economic disparity between provinces with intensity above and below the median. Mechanism analysis suggests that the effects are likely to be driven by the increase of official's human capital, the improvements in governance capability, the development of market-friendly industrialization, and the emergence of pluralistic political institutions. All these have been achieved without a regime change in PRC. </div>
-    </div>
-
-    <div class="session-card" data-fields="Labor PlatformDigital">
-      <div class="card-top">
-        <div>
-          <div class="card-meta">
-            <span class="card-date">2024 / 11 / 6</span>
-            <span class="card-author">Jingman Cao</span>
-            <span class="card-affil">NUS</span>
-          </div>
-          <div class="card-title">Generative AI and Labor Market Inequality: Evidence from a Global Freelance Market</div>
-        </div>
-      </div>
-      <div class="tag-row">
-        <span class="tag tag-Labor">Labor</span>
-        <span class="tag tag-PlatformDigital">Platform / Digital</span>
-      </div>
-      <button class="toggle-abstract" onclick="toggleAbstract(this)">
-        Show abstract <span class="arrow">▾</span>
-      </button>
-      <div class="card-abstract">
-       Generative AI technologies have the potential to either exacerbate or alleviate labor market inequalities. This paper examines the impact of ChatGPT on freelancers with varying levels of English proficiency in a global online labor market. We find that, since ChatGPT’s introduction, the earnings and job count gap between native and non-native English speakers have narrowed. Our analysis reveals that non-native speakers have become more competitive, securing more complex and higher-paying jobs with enhanced productivity, and experiencing lower job displacement. These findings suggest that generative AI can play a meaningful role in reducing disparities in employment opportunities in the global labor market. </div>
-    </div>
-
-    <div class="session-card" data-fields="IO Environmental Labor">
-      <div class="card-top">
-        <div>
-          <div class="card-meta">
-            <span class="card-date">2024 / 12 / 4</span>
-            <span class="card-author">Honghao Zheng</span>
-            <span class="card-affil">KU Leuven</span>
-          </div>
-          <div class="card-title">Death by Market Power: The Production-Safety Tradeoff in the Coal Mining Industry</div>
-        </div>
-      </div>
-      <div class="tag-row">
-        <span class="tag tag-IO">IO</span>
-        <span class="tag tag-Environmental">Environmental</span>
-        <span class="tag tag-Labor">Labor</span>
-      </div>
-      <button class="toggle-abstract" onclick="toggleAbstract(this)">
-        Show abstract <span class="arrow">▾</span>
-      </button>
-      <div class="card-abstract">
-       I examine the effects of downstream buyer power from coal-fired power plants on the organization of production in the upstream coal mining industry in China. I estimate a structural model of coal mines featuring (i) joint production of coal and worker safety and (ii) endogenous safety choices and factor-augmenting productivity. To identify the causal effects of buyer power on coal mining outcomes, I employ a shift-share instrumental variable, leveraging exogenous variations stemming from a restructuring of the electricity sector. I find an unintended but life-and-death consequence associated with market power—buyer power exposure leads to higher provincial death rates, also corroborated by lower safety-coal output ratios at the mine level. The underlying mechanism is that exposure to buyer power prompts coal mines to shift toward less capital-intensive, more traditional, and less safe mining technologies, leading to higher death rates. Finally, back-of-the-envelope calculations suggest that the decline in buyer power due to the electricity sector restructuring explains 53% of the improvement in coal mining death rates. The findings provide a new perspective on understanding the shared experience of high mining death rates in developed and developing countries over different historical periods. </div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════════════ -->
-  <!-- AY 2024/25 Spring Semester -->
-  <!-- ══════════════════════════════════════════════════ -->
-  <div class="semester-group" id="sem-2025spring">
-    <div class="semester-heading">Presentations in 2025 Spring Semester</div>
-
-    <div class="session-card" data-fields="Labor PlatformDigital">
-      <div class="card-top">
-        <div>
-          <div class="card-meta">
-            <span class="card-date">2025 / 2 / 28</span>
-            <span class="card-author">Jingman Cao</span>
-            <span class="card-affil">NUS</span>
-          </div>
-          <div class="card-title">When AI Writes Alike: Implications for Job Matching Efficiency</div>
-        </div>
-      </div>
-      <div class="tag-row">
-        <span class="tag tag-Labor">Labor</span>
-        <span class="tag tag-PlatformDigital">Platform / Digital</span>
-      </div>
-      <button class="toggle-abstract" onclick="toggleAbstract(this)">
-        Show abstract <span class="arrow">▾</span>
-      </button>
-      <div class="card-abstract">
-        Online platforms are introducing various kinds of generative AI tools after the emerging of ChatGPT. Although these tools could improve work productivity, they could also introduce issues of writing content convergence, which might result in increased screening difficulty and lower matching efficiency. In this paper, we study Job Post Generator, a generative AI tool launched by a freelance platform, Upwork. After its introduction, the average pairwise cosine similarity of job postings increased by 18% from 2023 March to 2024 September. We find that clients who use the Job Post Generator match with freelancers more quickly on average. However, those who rely heavily on AI-generated content with minimal modifications experience longer matching times. In contrast, clients who actively edit and customize AI-generated job postings experience significant improvements in matching efficiency, benefit from lower payment costs, and report higher satisfaction with freelancers' performance. We provide evidence that the homogenization of job postings due to AI-driven writing can negatively impact online job matching efficiency. Our findings suggest that online platforms offering generative AI tools should encourage users to modify and personalize AI-generated content to achieve better outcomes. </div>
-    </div>
-
-    <div class="session-card" data-fields="IO ConsumerBehavior">
-      <div class="card-top">
-        <div>
-          <div class="card-meta">
-            <span class="card-date">2025 / 3 / 14</span>
-            <span class="card-author">Xinbo Wang</span>
-            <span class="card-affil">NUS</span>
-          </div>
-          <div class="card-title">The Demand for Counterfeits</div>
-        </div>
-      </div>
-      <div class="tag-row">
-        <span class="tag tag-IO">IO</span>
-        <span class="tag tag-ConsumerBehavior">Consumer Behavior</span>
-      </div>
-      <button class="toggle-abstract" onclick="toggleAbstract(this)">
-        Show abstract <span class="arrow">▾</span>
-      </button>
-      <div class="card-abstract">
-        Using 11 million orders from 2 million U.S. consumers on a major cross-border e-commerce
-platform, we document three main findings on counterfeit demand. First, socioeconomic status has a non-monotonic relationship with purchasing behavior: both low- and high-income consumers purchase more fakes than those in the middle. Second, local culture exerts a significant effect: communities characterized by lower trust buy more counterfeits, while communities with stronger social capital buy less counterfeits. Third, market design matters: consumer-generated product-quality information can increase counterfeit sales. We explore heterogeneous effects for each finding and discuss their policy implications.</div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════════════ -->
-  <!-- AY 2025/26 Fall Semester -->
-  <!-- ══════════════════════════════════════════════════ -->
-  <div class="semester-group" id="sem-2025fall">
-    <div class="semester-heading">Presentations in 2025 Fall Semester</div>
-
-    <div class="session-card" data-fields="PlatformDigital IO">
-      <div class="card-top">
-        <div>
-          <div class="card-meta">
-            <span class="card-date">2025 / 9 / 11</span>
-            <span class="card-author">Xinbo Wang</span>
-            <span class="card-affil">NUS</span>
-          </div>
-          <div class="card-title">Give a Fish or Teach to Fish — Evidence of Sharing Knowledge on an AIGC Platform</div>
-        </div>
-      </div>
-      <div class="tag-row">
-        <span class="tag tag-PlatformDigital">Platform / Digital</span>
-        <span class="tag tag-IO">IO</span>
-      </div>
-      <button class="toggle-abstract" onclick="toggleAbstract(this)">
-        Show abstract <span class="arrow">▾</span>
-      </button>
-      <div class="card-abstract">
-        Abstract not available.
-      </div>
-    </div>
-
-    <div class="session-card" data-fields="IO MarketDesign PlatformDigital">
-      <div class="card-top">
-        <div>
-          <div class="card-meta">
-            <span class="card-date">2025 / 9 / 18</span>
-            <span class="card-author">Gaoyang Cai</span>
-            <span class="card-affil">Northwestern University</span>
-          </div>
-          <div class="card-title">Information Disclosure and Efficiency in Dynamic Negotiations: An Experimental and Structural Analysis</div>
-        </div>
-      </div>
-      <div class="tag-row">
-        <span class="tag tag-IO">IO</span>
-        <span class="tag tag-MarketDesign">Market Design</span>
-        <span class="tag tag-PlatformDigital">Platform / Digital</span>
-      </div>
-      <button class="toggle-abstract" onclick="toggleAbstract(this)">
-        Show abstract <span class="arrow">▾</span>
-      </button>
-      <div class="card-abstract">
-        This paper examines the causal effects of information disclosure policies on dynamic price negotiations. While information disclosure facilitates informed decision-making by enabling users to reveal private information, it also induces strategic signaling and price discrimination that can undermine market efficiency. I use a large-scale panel experiment on an on-demand delivery platform in which drivers offer delivery prices to shippers (customers). The platform randomly assigns cities either to a treatment group—where drivers observe the lowest prices previously rejected by shippers (full disclosure)—or to a control group, where no such information is disclosed (no disclosure). I find that full disclosure significantly increases shippers' rejection rates, holding offer prices fixed. In response, drivers strategically lower their offer prices and price-discriminate based on shippers' rejection records. Full disclosure increases the order transaction probability but lengthens transaction duration. To quantify equilibrium and welfare impacts of information disclosure policies, I develop a dynamic negotiation model, estimate its primitives on treatment data, and validate the model on holdout control data. I find that full disclosure benefits low-value shippers—who signal low valuations through strategic rejections, obtaining lower prices despite longer waits—while harming high-value shippers through driver price discrimination. Counterfactual analyses show that partial disclosure policies—disclosing only the lowest shipper-rejected prices below a threshold—achieve Pareto improvements in user welfare and platform revenue by mitigating negative signaling externalities, reducing driver markups, and enhancing market efficiency. Comparative statics show that the disclosure thresholds that maximize driver profits, platform revenue, and social welfare rise as shippers become less patient, as exit rates increase, or as drivers arrive less often. Targeting market primitives to optimize market-specific disclosure thresholds increases social welfare by 23.0% and 14.1% relative to the no disclosure and full disclosure benchmarks, respectively. </div>
-    </div>
-
-    <div class="session-card" data-fields="Labor PoliticalEcon">
-      <div class="card-top">
-        <div>
-          <div class="card-meta">
-            <span class="card-date">2025 / 9 / 25</span>
-            <span class="card-author">Orlando Betancourt</span>
-            <span class="card-affil">NUS</span>
-          </div>
-          <div class="card-title">Awards and Diversity: Evidence from Hollywood</div>
-        </div>
-      </div>
-      <div class="tag-row">
-        <span class="tag tag-Labor">Labor</span>
-        <span class="tag tag-PoliticalEcon">Political Econ</span>
-      </div>
-      <button class="toggle-abstract" onclick="toggleAbstract(this)">
-        Show abstract <span class="arrow">▾</span>
-      </button>
-      <div class="card-abstract">
-       I examine whether the recognition associated with major awards has different career effects depending on minority status. Exploiting the timing of Academy Award nominations since 1927, I focus on women as the underrepresented group. I find that while a nomination increases women’s subsequent career activity -as measured by the number of projects and lead roles-, this increase is significantly larger for men. Women also face gaps in salary growth and in the likelihood of future nominations. Exploring mechanisms, I show that men expand collaborations with other nominees and pursue more “Oscar-bait” projects, suggesting that network effects and strategic career choices might drive the gaps. I rule out childbearing and differences in project quality as alternative explanations.</div>
-    </div>
-
-    <div class="session-card" data-fields="Health Environmental">
-      <div class="card-top">
-        <div>
-          <div class="card-meta">
-            <span class="card-date">2025 / 10 / 2</span>
-            <span class="card-author">Zhuoru Ma</span>
-            <span class="card-affil">NTU</span>
-          </div>
-          <div class="card-title">Beyond Diagnosis: The Hidden Health Burden of Long-term PM2.5 Exposure</div>
-        </div>
-      </div>
-      <div class="tag-row">
-        <span class="tag tag-Health">Health</span>
-        <span class="tag tag-Environmental">Environmental</span>
-      </div>
-      <button class="toggle-abstract" onclick="toggleAbstract(this)">
-        Show abstract <span class="arrow">▾</span>
-      </button>
-      <div class="card-abstract">
-        This study investigates the hidden health burden of long-term air pollution exposure by comparing self-reported clinical diagnoses with biomarker-identified indicators of respiratory disease. Self-reported diagnoses, commonly used in economic analyses, may underestimate actual disease burden due to underdiagnosis and differential access to healthcare. We examine whether objective biomarkers reveal stronger pollution-health associations than conventional survey-based measures. We combine nationally representative data from the China Health and Retirement Longitudinal Survey (CHARLS) with high-resolution satellite-based PM2.5 estimates. To address endogeneity in pollution exposure, we construct instrumental variables based on share of wind direction days interacted with geographic clusters, leveraging quasi-random variation in atmospheric transport patterns. We find that air pollution significantly increases biomarker-identified risks of respiratory disease, by 0.33 percentage points per 1% increase in PM2.5, while no corresponding effect is observed in self-reported diagnoses. Similar patterns of underdiagnosis are found for cardiovascular, kidney and metabolic conditions. Underdiagnosis is more prominent among middle-aged individuals, males, those exposed to secondhand smoke, those with better childhood health, and those living in areas with limited healthcare resources. Our findings suggest that reliance on self-reported diagnoses may systematically understate the true health impacts of air pollution. </div>
-    </div>
-
-    <div class="session-card" data-fields="UrbanRealEstate Finance">
-      <div class="card-top">
-        <div>
-          <div class="card-meta">
-            <span class="card-date">2025 / 10 / 16</span>
-            <span class="card-author">Shuting Zhang</span>
-            <span class="card-affil">NUS</span>
-          </div>
-          <div class="card-title">Steady Home amid Turbulence: Equity Shocks and Reallocation into Housing</div>
-        </div>
-      </div>
-      <div class="tag-row">
-        <span class="tag tag-UrbanRealEstate">Urban / Real Estate</span>
-        <span class="tag tag-Finance">Finance</span>
-      </div>
-      <button class="toggle-abstract" onclick="toggleAbstract(this)">
-        Show abstract <span class="arrow">▾</span>
-      </button>
-      <div class="card-abstract">
-        Household wealth is concentrated in housing and equities. We test whether sharp equity swings reallocate demand into property market. Using China’s 2014 to 2015 stock market episode, we combine granular and high-frequency housing transactions with equity data and estimate a difference-in-differences design that contrasts communities 0–1 km with those 1–4 km from the same listed firm within month. During the run-up, the near ring records a 1.25% larger price increase relative to the farther ring, and after the crash the near-firm premium is 2.15%. To speak to the mechanisms, residents living close to listed firms are more likely to be employees and better informed about equity conditions, and triple-difference estimates that interact proximity with realized equity movements support this interpretation: when realized volatility is higher, the near-firm differential compresses and can reverse, with a 3.12% decline in the run-up and a 2.85% depreciation after the crash for high-volatility firms. Heterogeneity by buyer and seller links to the firm indicates that transactions involving residents employed by the listed firm within 1 km account for much of the response. Volume effects are insignificantly small, consistent with price revaluation on the intensive margin. Results are robust to alternative specifications and stricter controls and are consistent with local asset reallocation.</div>
-    </div>
-
-    <div class="session-card" data-fields="Finance Development LawEcon">
-      <div class="card-top">
-        <div>
-          <div class="card-meta">
-            <span class="card-date">2025 / 10 / 23</span>
-            <span class="card-author">Zhu Jianfei</span>
-            <span class="card-affil">HKU</span>
-          </div>
-          <div class="card-title">From Law to Livelihood: How Legal Development Shapes Informal Finance and Household Behavior</div>
-        </div>
-      </div>
-      <div class="tag-row">
-        <span class="tag tag-Finance">Finance</span>
-        <span class="tag tag-Development">Development</span>
-        <span class="tag tag-LawEcon">Law &amp; Econ</span>
-      </div>
-      <button class="toggle-abstract" onclick="toggleAbstract(this)">
-        Show abstract <span class="arrow">▾</span>
-      </button>
-      <div class="card-abstract">
-       This study examines how legal institutional development shapes informal finance by leveraging a Chinese reform that strengthened protections for digital peer-to-peer lenders. Using a Difference-in-Differences (DiD) framework and transaction-level data from a leading Chinese FinTech platform, I quantify post-reform changes in lending and borrowing within social networks. Strengthened legal enforcement expanded access to informal credit—especially among socially distant peers—and accelerated the formalization of digital transaction records. For borrowers, the reform increased repayment rates in informal markets, induced substitution from formal to informal financing, and raised discretionary spending, particularly on human capital such as vocational training and professional tools. These findings highlight how legal institutions both regulate and legitimize informal finance, with implications for financial inclusion and household welfare.</div>
-    </div>
-
-    <div class="session-card" data-fields="Finance Experimental">
-      <div class="card-top">
-        <div>
-          <div class="card-meta">
-            <span class="card-date">2025 / 10 / 30</span>
-            <span class="card-author">Jiani Wu</span>
-            <span class="card-affil">NTU</span>
-          </div>
-          <div class="card-title">How Investor Information Linkages Affect Trading Aggressiveness, Price Informativeness, and Post-Earnings-Announcement Drift</div>
-        </div>
-      </div>
-      <div class="tag-row">
-        <span class="tag tag-Finance">Finance</span>
-        <span class="tag tag-Experimental">Experimental</span>
-      </div>
-      <button class="toggle-abstract" onclick="toggleAbstract(this)">
-        Show abstract <span class="arrow">▾</span>
-      </button>
-      <div class="card-abstract">
-        We design a dynamic asset market experiment with exogenous information linkages among investors within a public earnings announcement framework. Confirming recent theoretical predictions, we find that trading aggressiveness and volume in the pre-announcement period first increase and then decline while price informativeness continues to improve as information linkages get denser.  Information sharing improves traders’ inference of the fundamental value and enhances the quality of pre-announcement information among individual investors.  This results in a weaker response to the subsequent public earnings announcement, with the magnitude of the post-earnings-announcement drift declining in the density of the pre-announcement information linkages. We demonstrate that social connectedness is an important determinant of market efficiency.</div>
-    </div>
-
-    <div class="session-card" data-fields="Environmental UrbanRealEstate">
-      <div class="card-top">
-        <div>
-          <div class="card-meta">
-            <span class="card-date">2025 / 11 / 27</span>
-            <span class="card-author">Zhihao Han</span>
-            <span class="card-affil">NUS</span>
-          </div>
-          <div class="card-title">NIMBY: Noise from the Build-Out of Clean Infrastructure and the Housing Market</div>
-        </div>
-      </div>
-      <div class="tag-row">
-        <span class="tag tag-Environmental">Environmental</span>
-        <span class="tag tag-UrbanRealEstate">Urban / Real Estate</span>
-      </div>
-      <button class="toggle-abstract" onclick="toggleAbstract(this)">
-        Show abstract <span class="arrow">▾</span>
-      </button>
-      <div class="card-abstract">
-        Abstract not available.
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════════════ -->
-  <!-- AY 2025/26 Spring Semester -->
-  <!-- ══════════════════════════════════════════════════ -->
-  <!-- <div class="semester-group" id="sem-2026spring">
-    <div class="semester-heading">Presentations in 2026 Spring Semester</div>
-
-    <div class="session-card" data-fields="IO EconofScience">
-      <div class="card-top">
-        <div>
-          <div class="card-meta">
-            <span class="card-date">2026 / 5 / 12</span>
-            <span class="card-author">En Qi Teo</span>
-            <span class="card-affil">NUS / TSE</span>
-          </div>
-          <div class="card-title">Submissions Related to Editors' Research Are More Likely to Succeed: Evidence from Economics Journals</div>
-        </div>
-      </div>
-      <div class="tag-row">
-        <span class="tag tag-IO">IO</span>
-        <span class="tag tag-EconofScience">Econ of Science</span>
-      </div>
-      <button class="toggle-abstract" onclick="toggleAbstract(this)">
-        Show abstract <span class="arrow">▾</span>
-      </button>
-      <div class="card-abstract">
-       Examining the editorial process at four leading economics journals, we find that editors were less likely to desk reject manuscripts related to their own research interests. This result is robust to controls for research trends, journal missions and time-varying journal characteristics. We use information on latent manuscript quality revealed by referee reports to ascertain the mechanism---whether editorial favoritism or strategic submissions by authors. Structural estimates point to the latter. Consistent with this interpretation, more productive scholars were disproportionately likely to submit related manuscripts. Finally, editors' research interests did not affect the downstream decision to invite revisions.</div>
-    </div>
   </div>
 
   <div class="no-results" id="noResults">No sessions match the selected field.</div>
-</div> -->
+</div>
 
 <script>
   const chips = document.querySelectorAll('.chip');
@@ -677,7 +425,6 @@ platform, we document three main findings on counterfeit demand. First, socioeco
   function filterCards(field) {
     activeField = field;
     let anyVisible = false;
-
     semGroups.forEach(group => {
       const groupCards = group.querySelectorAll('.session-card');
       let groupVisible = false;
@@ -689,7 +436,6 @@ platform, we document three main findings on counterfeit demand. First, socioeco
       });
       group.classList.toggle('hidden', !groupVisible);
     });
-
     noResults.classList.toggle('show', !anyVisible);
     updateCount();
   }
@@ -711,7 +457,6 @@ platform, we document three main findings on counterfeit demand. First, socioeco
       : 'Show abstract <span class="arrow">▾</span>';
   }
 
-  // Init count
   updateCount();
 </script>
 </body>
