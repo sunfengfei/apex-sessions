@@ -3,6 +3,17 @@
     "semester": "2026 Fall",
     "sessions": [
       {
+        "date": "2026-11-06",
+        "author": "Liaoliang Zhang",
+        "affiliation": "NUS",
+        "title": "Closing Occupational Expectation and Wage Gaps: Evidence from a Survey Experiment",
+        "fields": [
+          "LaborandEducation",
+          "BehavioralandExperiment"
+        ],
+        "abstract": "University students systematically misperceive occupational wage distributions, and these misperceptions vary by gender. Using a randomized survey experiment with 1,409 upper-year undergraduates, I show that students are pessimistic about wage levels, especially at the upper end of the wage distributions within and across occupations. Female students are more likely to underestimate wages, particularly at the upper percentiles, leading to a gender gap in expected wages. Providing occupational wage information induces students to revise their wage expectations and shift towards occupations with more favourable wage news. Female students who underestimated wages at baseline increase their expected wages more than their male counterparts. Follow-up surveys show that the initial treatment–control differences in wage expectations diminish as control students catch up. Nevertheless, occupational wage information influences actual job search behaviours, with treated students reporting more interviews and offers. Planned future surveys and linked administrative data will examine how information translates into internship and job outcomes."
+      },
+      {
         "date": "2026-10-23",
         "author": "Ruiqi Wang",
         "affiliation": "NUS",
