@@ -48,11 +48,12 @@ Use these exact keys in `fields`:
 | `BehavioralandExperiment` | Behavioral & Experiment |
 | `Development` | Development |
 | `EconomicHistory` | Economic History |
+| `Education` | Education |
 | `EnvironmentalandResource` | Environmental & Resource |
 | `Health` | Health |
 | `IndustrialOrganization` | Industrial Organization |
 | `InnovationandGrowth` | Innovation & Growth |
-| `LaborandEducation` | Labor & Education |
+| `Labor` | Labor |
 | `PublicandPoliticalEconomy` | Public & Political Economy |
 | `TransportandUrban` | Transport & Urban |
 

@@ -8,7 +8,9 @@
         "affiliation": "NUS",
         "title": "Closing Occupational Expectation and Wage Gaps: Evidence from a Survey Experiment",
         "fields": [
-          "LaborandEducation",
+          "Labor",
+          "Education",
+          "Development",
           "BehavioralandExperiment"
         ],
         "abstract": "University students systematically misperceive occupational wage distributions, and these misperceptions vary by gender. Using a randomized survey experiment with 1,409 upper-year undergraduates, I show that students are pessimistic about wage levels, especially at the upper end of the wage distributions within and across occupations. Female students are more likely to underestimate wages, particularly at the upper percentiles, leading to a gender gap in expected wages. Providing occupational wage information induces students to revise their wage expectations and shift towards occupations with more favourable wage news. Female students who underestimated wages at baseline increase their expected wages more than their male counterparts. Follow-up surveys show that the initial treatment–control differences in wage expectations diminish as control students catch up. Nevertheless, occupational wage information influences actual job search behaviours, with treated students reporting more interviews and offers. Planned future surveys and linked administrative data will examine how information translates into internship and job outcomes."
@@ -29,7 +31,8 @@
         "affiliation": "Duke University",
         "title": "Visa Policy, Global Education and Labor Markets",
         "fields": [
-          "LaborandEducation",
+          "Labor",
+          "Education",
           "PublicandPoliticalEconomy",
           "Development"
         ],
@@ -146,7 +149,7 @@
         "affiliation": "NUS",
         "title": "Awards and Diversity: Evidence from Hollywood",
         "fields": [
-          "LaborandEducation",
+          "Labor",
           "PublicandPoliticalEconomy"
         ],
         "abstract": "I examine whether the recognition associated with major awards has different career effects depending on minority status. Exploiting the timing of Academy Award nominations since 1927, I focus on women as the underrepresented group. I find that while a nomination increases women's subsequent career activity -as measured by the number of projects and lead roles-, this increase is significantly larger for men. Women also face gaps in salary growth and in the likelihood of future nominations. Exploring mechanisms, I show that men expand collaborations with other nominees and pursue more \"Oscar-bait\" projects, suggesting that network effects and strategic career choices might drive the gaps. I rule out childbearing and differences in project quality as alternative explanations."
@@ -195,7 +198,7 @@
         "affiliation": "NUS",
         "title": "When AI Writes Alike: Implications for Job Matching Efficiency",
         "fields": [
-          "LaborandEducation",
+          "Labor",
           "InnovationandGrowth"
         ],
         "abstract": "Online platforms are introducing various kinds of generative AI tools after the emerging of ChatGPT. Although these tools could improve work productivity, they could also introduce issues of writing content convergence, which might result in increased screening difficulty and lower matching efficiency. In this paper, we study Job Post Generator, a generative AI tool launched by a freelance platform, Upwork. After its introduction, the average pairwise cosine similarity of job postings increased by 18% from 2023 March to 2024 September. We find that clients who use the Job Post Generator match with freelancers more quickly on average. However, those who rely heavily on AI-generated content with minimal modifications experience longer matching times. In contrast, clients who actively edit and customize AI-generated job postings experience significant improvements in matching efficiency, benefit from lower payment costs, and report higher satisfaction with freelancers' performance. We provide evidence that the homogenization of job postings due to AI-driven writing can negatively impact online job matching efficiency. Our findings suggest that online platforms offering generative AI tools should encourage users to modify and personalize AI-generated content to achieve better outcomes."
@@ -213,7 +216,7 @@
         "fields": [
           "IndustrialOrganization",
           "EnvironmentalandResource",
-          "LaborandEducation"
+          "Labor"
         ],
         "abstract": "I examine the effects of downstream buyer power from coal-fired power plants on the organization of production in the upstream coal mining industry in China. I estimate a structural model of coal mines featuring (i) joint production of coal and worker safety and (ii) endogenous safety choices and factor-augmenting productivity. To identify the causal effects of buyer power on coal mining outcomes, I employ a shift-share instrumental variable, leveraging exogenous variations stemming from a restructuring of the electricity sector. I find an unintended but life-and-death consequence associated with market power—buyer power exposure leads to higher provincial death rates, also corroborated by lower safety-coal output ratios at the mine level. The underlying mechanism is that exposure to buyer power prompts coal mines to shift toward less capital-intensive, more traditional, and less safe mining technologies, leading to higher death rates. Finally, back-of-the-envelope calculations suggest that the decline in buyer power due to the electricity sector restructuring explains 53% of the improvement in coal mining death rates. The findings provide a new perspective on understanding the shared experience of high mining death rates in developed and developing countries over different historical periods."
       },
@@ -223,7 +226,7 @@
         "affiliation": "NUS",
         "title": "Generative AI and Labor Market Inequality: Evidence from a Global Freelance Market",
         "fields": [
-          "LaborandEducation",
+          "Labor",
           "InnovationandGrowth"
         ],
         "abstract": "Generative AI technologies have the potential to either exacerbate or alleviate labor market inequalities. This paper examines the impact of ChatGPT on freelancers with varying levels of English proficiency in a global online labor market. We find that, since ChatGPT's introduction, the earnings and job count gap between native and non-native English speakers have narrowed. Our analysis reveals that non-native speakers have become more competitive, securing more complex and higher-paying jobs with enhanced productivity, and experiencing lower job displacement. These findings suggest that generative AI can play a meaningful role in reducing disparities in employment opportunities in the global labor market."
